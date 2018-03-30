@@ -236,6 +236,36 @@ describe('Random', function() {
             expect(data).to.be.ok
             this.test.title = stringify(this.test.title) + ' => '
         })
+        it('Random.photo()', function() {
+            var data = eval(this.test.title)
+            // var data = eval(this.test.title)
+            expect(data).to.be.eql('https://picsum.photos/250')
+        })
+        it('Random.photo(120)', function() {
+            var data = eval(this.test.title)
+            // var data = eval(this.test.title)
+            expect(data).to.be.eql('https://picsum.photos/120')
+        })
+        it('Random.photo("120x100")', function() {
+            var data = eval(this.test.title)
+            expect(data).to.be.eql('https://picsum.photos/120/100')
+        })
+        it('Random.photo("120x100","r")', function() {
+            var data = eval(this.test.title)
+            expect(data).to.be.eql('https://picsum.photos/120/100?random')
+        })
+        it('Random.photo("g", "120x100")', function() {
+            var data = eval(this.test.title)
+            expect(data).to.be.eql('https://picsum.photos/g/120/100')
+        })
+        it('Random.photo("g", "120x100","r")', function() {
+            var data = eval(this.test.title)
+            expect(data).to.be.eql('https://picsum.photos/g/120/100?random')
+        })
+        it('Random.photo("120x100","image=1083")', function() {
+            var data = eval(this.test.title)
+            expect(data).to.be.eql('https://picsum.photos/120/100?image=1083')
+        })
     })
 
     var RE_COLOR = /^#[0-9a-fA-F]{6}$/
