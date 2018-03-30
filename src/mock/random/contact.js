@@ -11,6 +11,6 @@ module.exports = {
             182,183,184,188,187,147,178,133,153,180,
             181,189,177
         ]
-        return parseInt(this.pick(prefix) + String(this.integer(0,99999999)).padStart('0'))
+        return parseInt(String(this.pick(prefix)) + String(this.integer(11111111,99999999)))
 	}
 }
