@@ -23,7 +23,7 @@ module.exports = {
 
         替代图片源
             http://fpoimg.com/
-        参考自 
+        参考自
             http://rensanning.iteye.com/blog/1933310
             http://code.tutsplus.com/articles/the-top-8-placeholders-for-web-designers--net-19485
     */
@@ -278,5 +278,46 @@ module.exports = {
         ctx.font = 'bold ' + text_height + 'px ' + font
         ctx.fillText(text, (width / 2), (height / 2), width)
         return canvas.toDataURL('image/png')
+    },
+    /*
+        返回随机图片url https://www.npmjs.com/package/unsplash
+    */
+    photo: function () {
+        var uh = function (g, width, height, param) {
+            var path = ['https://picsum.photos']
+            var arg = []
+            Array.from(arguments).forEach(function (item) {
+                item = String(item).trim()
+                var size = []
+                // 200x112
+                if (item.replace(/\d/g, '') === 'x') {
+                    arg = arg.concat(item.split('x'))
+                }
+                else {
+                    arg.push(item)
+                }
+            })
+
+            var i
+            for(i=0; i<arg.length; i++) {
+                var item = arg[i]
+                item = String(item).trim()
+                if (!/^(g|\d+)$/.test(item)) {
+                    if (item === 'r') {
+                        item = 'random'
+                    }
+                    item = '?' + item
+                }
+                else {
+                    item = '/' + item
+                }
+                path.push(item)
+            }
+            if (typeof g === 'undefined') {
+                path.push('/250')
+            }
+            return path.join('')
+        }
+        return uh.apply(null, arguments)
     }
 }
