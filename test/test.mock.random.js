@@ -398,6 +398,12 @@ describe('Random', function() {
             expect(data).to.be.ok
         })
     })
+    describe('Contact', function() {
+        doit('Random.cmobile()', function(data) {
+            expect(data).to.be.a('number')
+            expect(String(data)).with.length(11)
+        })
+    })
     describe('Helpers', function() {
         doit('Random.capitalize()', function(data) {
             expect(data).to.equal('Undefined')
